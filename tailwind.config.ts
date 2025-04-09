@@ -52,7 +52,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        barlow: 'var(--barlow)',
+        barlow: 'var(--font-barlow)',
       },
       borderRadius: {
         lg: 'var(--radius)',
