@@ -3,7 +3,7 @@ import { UserButton } from '@clerk/nextjs';
 
 function Header() {
   return (
-    <header className='flex items-center justify-end gap-2 border-b bg-slate-100 p-4'>
+    <header className='flex items-center justify-end gap-2 border-b p-4'>
       <ThemeToggle />
       <UserButton />
     </header>
