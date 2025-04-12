@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { User } from '@clerk/nextjs/server';
@@ -13,9 +13,6 @@ function UserInfo({ user }: { user: User }) {
           src={user?.imageUrl}
           alt={`${user?.firstName} ${user?.lastName}`}
         />
-        <AvatarFallback className='bg-primary text-white'>
-          {user?.firstName} {user?.lastName}
-        </AvatarFallback>
       </Avatar>
       <div className='flex flex-col gap-y-1'>
         <span className='text-left'>

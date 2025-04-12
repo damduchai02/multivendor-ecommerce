@@ -76,7 +76,7 @@ export const icons = [
     path: ShippingIcon,
   },
   {
-    label: 'Offer',
+    label: 'Offer Tags',
     value: 'offer',
     path: OfferIcon,
   },
