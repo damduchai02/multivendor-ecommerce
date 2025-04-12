@@ -1,4 +1,5 @@
 import ThemeToggle from '@/components/shared/theme-toggle';
+import { UserButton } from '@clerk/nextjs';
 
 function Header() {
   return (
