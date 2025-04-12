@@ -1,17 +1,16 @@
-import Header from '@/components/dashboard/header/header';
-import Sidebar from '@/components/dashboard/sidebar/sidebar';
+import { redirect } from 'next/navigation';
+import { currentUser } from '@clerk/nextjs/server';
 
-function DashboardPage({ children }: { children: React.ReactNode }) {
-  return (
-    <div className='grid h-screen grid-cols-[300px_1fr] grid-rows-[auto_1fr]'>
-      <Header />
-      <Sidebar />
-      <main>
-        <div>Main</div>
-        {children}
-      </main>
-    </div>
-  );
+async function DashboardPage({ children }: { children: React.ReactNode }) {
+  // Retrieve the current user information
+  const user = await currentUser();
+
+  // Checking role user
+  if (user?.privateMetadata.role === 'USER') redirect('/');
+  if (user?.privateMetadata.role === 'ADMIN') redirect('/dashboard/admin');
+  if (user?.privateMetadata.role === 'SELLER') redirect('/dashboard/seller');
+
+  return <>{children}</>;
 }
 
 export default DashboardPage;

@@ -62,8 +62,6 @@ export async function POST(req: Request) {
       picture: data.image_url,
     };
 
-    console.log(user);
-
     // If user data is invalid, exit the function
     if (!user) return;
 

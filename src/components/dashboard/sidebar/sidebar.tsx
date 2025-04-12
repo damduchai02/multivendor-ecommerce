@@ -1,12 +1,14 @@
+import { currentUser, User } from '@clerk/nextjs/server';
 import Logo from '@/components/shared/logo';
-
 import UserInfo from './user-info';
 
-function Sidebar() {
+async function Sidebar() {
+  const user: User | null = await currentUser();
+
   return (
-    <aside className='row-[1/-1] border-r'>
+    <aside className='row-[1/-1] flex flex-col border-r'>
       <Logo />
-      <UserInfo />
+      <UserInfo user={user} />
     </aside>
   );
 }
