@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Alice Morgan",
+    "email": "alicemorgan@gmail.com",
+    "picture": "https://ui-avatars.com/api/?name=Alice+Morgan&background=random",
+    "role": "ADMIN"
+  },
+  {
+    "name": "David Carter",
+    "email": "davidcarter@gmail.com",
+    "picture": "https://ui-avatars.com/api/?name=David+Carter&background=random",
+    "role": "USER"
+  },
+  {
+    "name": "Sophia Reed",
+    "email": "sophiareed@gmail.com",
+    "picture": "https://ui-avatars.com/api/?name=Sophia+Reed&background=random",
+    "role": "SELLER"
+  }
+]
