@@ -3,8 +3,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { User } from '@clerk/nextjs/server';
 
-function UserInfo({ user }: { user: User | null }) {
-  const role = user?.privateMetadata.role as string;
+function UserInfo({ user }: { user: User }) {
+  const role = user?.privateMetadata.role;
 
   return (
     <Button variant='ghost' className='py-10'>
