@@ -1,5 +1,5 @@
-function CategoriesPage() {
-  return <div>CategoriesPage</div>;
+function AdminCategoriesPage() {
+  return <div>Admin Categories Page</div>;
 }
 
-export default CategoriesPage;
+export default AdminCategoriesPage;
