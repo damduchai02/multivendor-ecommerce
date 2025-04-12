@@ -1,4 +1,4 @@
-const BoxListIcon = () => {
+function BoxListIcon() {
   return (
     <svg
       width={50}
@@ -29,6 +29,6 @@ const BoxListIcon = () => {
       </svg>
     </svg>
   );
-};
+}
 
 export default BoxListIcon;
