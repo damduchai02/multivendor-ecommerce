@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { User } from '@clerk/nextjs/server';
 
 function UserInfo({ user }: { user: User }) {
-  const role = user?.privateMetadata.role;
+  const role = user?.privateMetadata.role as string;
 
   return (
     <Button variant='ghost' className='py-10'>
