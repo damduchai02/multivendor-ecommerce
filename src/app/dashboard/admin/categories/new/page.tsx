@@ -1,5 +1,11 @@
+import CategoryDetails from '@/components/dashboard/forms/category-details';
+
 function AdminNewCategoryPage() {
-  return <div>AdminNewCategoryPage</div>;
+  return (
+    <>
+      <CategoryDetails />
+    </>
+  );
 }
 
 export default AdminNewCategoryPage;

@@ -16,7 +16,7 @@ async function AdminDashboardLayout({
     <div className='grid h-screen grid-cols-[300px_1fr] grid-rows-[auto_1fr]'>
       <Header />
       <Sidebar />
-      <main>{children}</main>
+      <main className='p-4'>{children}</main>
     </div>
   );
 }

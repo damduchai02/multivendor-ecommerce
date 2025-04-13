@@ -4,8 +4,8 @@ import { UserButton } from '@clerk/nextjs';
 function HomePage() {
   return (
     <div className='flex gap-x-5'>
-      <UserButton />
       <ThemeToggle />
+      <UserButton />
     </div>
   );
 }
