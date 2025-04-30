@@ -8,6 +8,9 @@ import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { ClerkProvider } from '@clerk/nextjs';
 
+import { Toaster as SonnerToaster } from 'sonner';
+import { Toaster } from '@/components/ui/toaster';
+
 // Fonts
 const interFont = Inter({ subsets: ['latin'] });
 const barlowFont = Barlow({
@@ -40,6 +43,8 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          <Toaster />
+          <SonnerToaster position='bottom-left' />
         </body>
       </html>
     </ClerkProvider>

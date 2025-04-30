@@ -2,6 +2,7 @@
 
 import * as z from 'zod';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { Loader2 } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -27,7 +28,12 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+
 import ImageUpload from '../shared/image-upload';
+import { upsertCategory } from '@/queries/category';
+
+import { v4 as uuidv4 } from 'uuid';
+import { useToast } from '@/hooks/use-toast';
 
 interface CategoryDetailsProps {
   data?: Category;
@@ -35,6 +41,9 @@ interface CategoryDetailsProps {
 }
 
 function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
+  const router = useRouter();
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof CategoryFormSchema>>({
     mode: 'onChange',
     resolver: zodResolver(CategoryFormSchema),
@@ -59,8 +68,36 @@ function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
     }
   }, [data, form]);
 
-  const onSubmit = (values: z.infer<typeof CategoryFormSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof CategoryFormSchema>) => {
+    try {
+      const res = (await upsertCategory({
+        id: data?.id ? data.id : uuidv4(),
+        name: values.name,
+        image: values.image[0].url,
+        url: values.url,
+        featured: values.featured,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      })) as Category;
+
+      toast({
+        title: data?.id
+          ? 'Category has been updated.'
+          : `${res.name} Congratulations! is now officially created.`,
+      });
+
+      if (data?.id) {
+        router.refresh();
+      } else {
+        router.push('/dashboard/admin/categories');
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        variant: 'destructive',
+        title: 'Oops!',
+      });
+    }
   };
 
   const onError = (errors: FieldErrors) => {
