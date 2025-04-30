@@ -27,8 +27,14 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import ImageUpload from '../shared/image-upload';
 
-function CategoryDetails({ data }: { data?: Category }) {
+interface CategoryDetailsProps {
+  data?: Category;
+  cloudinaryKey: string;
+}
+
+function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
   const form = useForm<z.infer<typeof CategoryFormSchema>>({
     mode: 'onChange',
     resolver: zodResolver(CategoryFormSchema),
@@ -77,6 +83,30 @@ function CategoryDetails({ data }: { data?: Category }) {
             onSubmit={form.handleSubmit(onSubmit, onError)}
             className='space-y-4'
           >
+            <FormField
+              control={form.control}
+              name='image'
+              render={({ field }) => (
+                <FormItem>
+                  <ImageUpload
+                    value={field.value.map((image) => image.url)}
+                    onChange={(url) => {
+                      field.onChange([{ url }]);
+                    }}
+                    onRemove={(url) => {
+                      field.onChange([
+                        ...field.value.filter((current) => current.url !== url),
+                      ]);
+                    }}
+                    disabled={isSubmitting}
+                    cloudinaryKey={cloudinaryKey}
+                  />
+
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <FormField
               control={form.control}
               name='name'
