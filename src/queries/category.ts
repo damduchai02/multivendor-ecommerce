@@ -57,3 +57,17 @@ export const upsertCategory = async (category: Category) => {
     console.log(error);
   }
 };
+
+export const getAllCategories = async () => {
+  const categories = await db.category.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
+
+  return categories;
+};
+
+export const getCategory = () => {};
+
+export const deleteCategory = () => {};

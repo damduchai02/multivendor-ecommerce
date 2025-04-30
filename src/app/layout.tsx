@@ -10,6 +10,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 
 import { Toaster as SonnerToaster } from 'sonner';
 import { Toaster } from '@/components/ui/toaster';
+import ModalProvider from '@/providers/modal-provider';
 
 // Fonts
 const interFont = Inter({ subsets: ['latin'] });
@@ -41,7 +42,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <ModalProvider>{children}</ModalProvider>
           </ThemeProvider>
           <Toaster />
           <SonnerToaster position='bottom-left' />
