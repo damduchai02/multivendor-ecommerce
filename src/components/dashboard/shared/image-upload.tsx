@@ -38,7 +38,7 @@ function ImageUpload({
 
   return (
     <div className='relative mx-auto h-52 w-52 rounded-full border-2 bg-gray-200'>
-      {value.length === 0 && (
+      {value.length > 0 && (
         <Image
           src={value[0]}
           alt=''
