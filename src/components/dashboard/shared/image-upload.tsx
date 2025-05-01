@@ -38,7 +38,7 @@ function ImageUpload({
 
   return (
     <div className='relative mx-auto h-52 w-52 rounded-full border-2 bg-gray-200'>
-      {value.length > 0 && (
+      {value.length === 0 && (
         <Image
           src={value[0]}
           alt=''
@@ -50,16 +50,16 @@ function ImageUpload({
 
       <CldUploadWidget uploadPreset={cloudinaryKey} onSuccess={onSuccess}>
         {({ open }) => {
-          const onClick = () => {
+          const handleClick = () => {
             open();
           };
 
           return (
             <button
               type='button'
-              className='from-blue-primary absolute bottom-4 right-4 flex items-center rounded-full border-none bg-gradient-to-t to-blue-300 px-6 py-3 text-[17px] font-medium text-white shadow-lg hover:shadow-md active:shadow-sm'
+              className='absolute bottom-4 right-4 flex items-center rounded-full border-none bg-gradient-to-t from-blue-primary to-blue-300 px-6 py-3 text-[17px] font-medium text-white shadow-lg hover:shadow-md active:shadow-sm'
               disabled={disabled}
-              onClick={onClick}
+              onClick={handleClick}
             >
               <svg
                 viewBox='0 0 640 512'

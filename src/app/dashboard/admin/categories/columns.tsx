@@ -133,9 +133,7 @@ const CellActions: React.FC<CellActionsProps> = ({ rowData }) => {
             className='flex gap-2'
             onClick={() => {
               setOpen(
-                // Custom modal component
                 <CustomModal>
-                  {/* Store details component */}
                   <CategoryDetails
                     data={{ ...rowData }}
                     cloudinaryKey='gqmbvzdl'

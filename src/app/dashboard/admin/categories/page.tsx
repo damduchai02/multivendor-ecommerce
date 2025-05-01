@@ -12,7 +12,6 @@ async function AdminCategoriesPage() {
   if (!categories) return null;
 
   const cloudinaryKey = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME;
-  console.log(cloudinaryKey);
 
   if (!cloudinaryKey) return null;
 
@@ -23,7 +22,7 @@ async function AdminCategoriesPage() {
           <Plus size={15} /> Create category
         </>
       }
-      modalChildren={<CategoryDetails cloudinaryKey={cloudinaryKey} />}
+      modalChildren={<CategoryDetails cloudinaryKey='gqmbvzdl' />}
       filterValue='name'
       data={categories}
       searchPlaceholder='Search category name...'

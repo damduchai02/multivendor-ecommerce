@@ -70,7 +70,7 @@ function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
 
   const onSubmit = async (values: z.infer<typeof CategoryFormSchema>) => {
     try {
-      const res = (await upsertCategory({
+      const category = (await upsertCategory({
         id: data?.id ? data.id : uuidv4(),
         name: values.name,
         image: values.image[0].url,
@@ -83,7 +83,7 @@ function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
       toast({
         title: data?.id
           ? 'Category has been updated.'
-          : `${res.name} Congratulations! is now officially created.`,
+          : `${category.name} Congratulations! is now officially created.`,
       });
 
       if (data?.id) {

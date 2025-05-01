@@ -78,23 +78,22 @@ export function DataTable<TData, TValue>({
           />
         </div>
         <div className='flex gap-x-2'>
-          {modalChildren && (
-            <Button
-              className='flex gap-2'
-              onClick={() => {
-                setOpen(
-                  <CustomModal
-                    heading={heading || 'heading'}
-                    subheading={subheading || ''}
-                  >
-                    {modalChildren}
-                  </CustomModal>,
-                );
-              }}
-            >
-              {actionButtonText}
-            </Button>
-          )}
+          <Button
+            className='flex gap-2'
+            onClick={() => {
+              setOpen(
+                <CustomModal
+                  heading={heading || ''}
+                  subheading={subheading || ''}
+                >
+                  {modalChildren}
+                </CustomModal>,
+              );
+            }}
+          >
+            {actionButtonText}
+          </Button>
+
           {newTabLink && (
             <Link href={newTabLink}>
               <Button variant='outline'>
