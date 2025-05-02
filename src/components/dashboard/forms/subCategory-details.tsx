@@ -2,7 +2,7 @@
 
 import * as z from 'zod';
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { Loader2 } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -54,6 +54,7 @@ function SubCategoryDetails({
   cloudinaryKey,
 }: SubCategoryDetailsProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof SubCategoryFormSchema>>({
@@ -103,17 +104,17 @@ function SubCategoryDetails({
           : `"${subCategory?.name}" Congratulations! is now officially created.`,
       });
 
-      if (data?.id) {
+      if (data?.id || pathname === '/dashboard/admin/subCategories') {
         router.refresh();
       } else {
         router.push('/dashboard/admin/subCategories');
       }
-    } catch (error) {
-      console.log(error);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
       toast({
         variant: 'destructive',
         title: 'Oops!',
-        description: 'abc',
+        description: error.message,
       });
     }
   };

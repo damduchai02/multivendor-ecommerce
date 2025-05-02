@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import * as z from 'zod';
@@ -93,6 +92,7 @@ function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
       } else {
         router.push('/dashboard/admin/categories');
       }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast({
         variant: 'destructive',
