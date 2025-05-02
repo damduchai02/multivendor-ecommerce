@@ -19,6 +19,7 @@ async function AdminCategoriesPage() {
           <Plus size={15} /> Create category
         </>
       }
+      newTabLink='/dashboard/admin/categories/new'
       modalChildren={<CategoryDetails cloudinaryKey={cloudinaryKey} />}
       filterValue='name'
       data={categories}
