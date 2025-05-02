@@ -148,6 +148,28 @@ exports.Prisma.SubCategoryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.StoreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  email: 'email',
+  phone: 'phone',
+  url: 'url',
+  logo: 'logo',
+  cover: 'cover',
+  status: 'status',
+  averageRating: 'averageRating',
+  featured: 'featured',
+  returnPolicy: 'returnPolicy',
+  defaultShippingService: 'defaultShippingService',
+  defaultShippingFees: 'defaultShippingFees',
+  defaultDeliveryTimeIn: 'defaultDeliveryTimeIn',
+  defaultDeliveryTimeMax: 'defaultDeliveryTimeMax',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -167,11 +189,6 @@ exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
   url: 'url'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 exports.Prisma.SubCategoryOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
@@ -179,16 +196,43 @@ exports.Prisma.SubCategoryOrderByRelevanceFieldEnum = {
   url: 'url',
   categoryId: 'categoryId'
 };
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.StoreOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  email: 'email',
+  phone: 'phone',
+  url: 'url',
+  logo: 'logo',
+  cover: 'cover',
+  returnPolicy: 'returnPolicy',
+  defaultShippingService: 'defaultShippingService',
+  userId: 'userId'
+};
 exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN',
   USER: 'USER',
   SELLER: 'SELLER'
 };
 
+exports.StoreStatus = exports.$Enums.StoreStatus = {
+  PENDING: 'PENDING',
+  ACTIVE: 'ACTIVE',
+  BANNER: 'BANNER',
+  DISABLED: 'DISABLED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Category: 'Category',
-  SubCategory: 'SubCategory'
+  SubCategory: 'SubCategory',
+  Store: 'Store'
 };
 
 /**
