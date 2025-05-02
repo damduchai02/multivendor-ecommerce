@@ -63,6 +63,9 @@ export const getAllSubCategories = async () => {
     orderBy: {
       createdAt: 'desc',
     },
+    include: {
+      Category: true,
+    },
   });
 
   return subCategories;

@@ -46,7 +46,7 @@ model SubCategory {
   url      String
   featured Boolean @default(false)
 
-  categoryId String?
+  categoryId String
   Category   Category? @relation("CategoryToSubCategory", fields: [categoryId], references: [id])
 
   createdAt DateTime @default(now())

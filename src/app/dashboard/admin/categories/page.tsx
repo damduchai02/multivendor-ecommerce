@@ -7,13 +7,10 @@ import CategoryDetails from '@/components/dashboard/forms/category-details';
 import { columns } from './columns';
 
 async function AdminCategoriesPage() {
+  const cloudinaryKey = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME;
   const categories = await getAllCategories();
 
-  if (!categories) return null;
-
-  const cloudinaryKey = process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME;
-
-  if (!cloudinaryKey) return null;
+  if (!cloudinaryKey || !categories) return null;
 
   return (
     <DataTable
@@ -22,7 +19,7 @@ async function AdminCategoriesPage() {
           <Plus size={15} /> Create category
         </>
       }
-      modalChildren={<CategoryDetails cloudinaryKey='gqmbvzdl' />}
+      modalChildren={<CategoryDetails cloudinaryKey={cloudinaryKey} />}
       filterValue='name'
       data={categories}
       searchPlaceholder='Search category name...'

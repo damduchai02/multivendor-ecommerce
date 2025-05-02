@@ -71,8 +71,6 @@ function SubCategoryDetails({
 
   const isSubmitting = form.formState.isSubmitting;
 
-  console.log(form.watch());
-
   useEffect(() => {
     if (data) {
       form.reset({
