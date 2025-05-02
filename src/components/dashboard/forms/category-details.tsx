@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import * as z from 'zod';
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { FieldErrors, useForm } from 'react-hook-form';
 import { Loader2 } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -42,6 +43,7 @@ interface CategoryDetailsProps {
 
 function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof CategoryFormSchema>>({
@@ -70,7 +72,7 @@ function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
 
   const onSubmit = async (values: z.infer<typeof CategoryFormSchema>) => {
     try {
-      const category = (await upsertCategory({
+      const category = await upsertCategory({
         id: data?.id ? data.id : uuidv4(),
         name: values.name,
         image: values.image[0].url,
@@ -78,24 +80,24 @@ function CategoryDetails({ data, cloudinaryKey }: CategoryDetailsProps) {
         featured: values.featured,
         createdAt: new Date(),
         updatedAt: new Date(),
-      })) as Category;
+      });
 
       toast({
         title: data?.id
           ? 'Category has been updated.'
-          : `${category.name} Congratulations! is now officially created.`,
+          : `"${category?.name}" Congratulations! is now officially created.`,
       });
 
-      if (data?.id) {
+      if (data?.id || pathname === '/dashboard/admin/categories') {
         router.refresh();
       } else {
         router.push('/dashboard/admin/categories');
       }
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
       toast({
         variant: 'destructive',
         title: 'Oops!',
+        description: error.message,
       });
     }
   };

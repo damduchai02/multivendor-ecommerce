@@ -137,6 +137,17 @@ exports.Prisma.CategoryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.SubCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image',
+  url: 'url',
+  featured: 'featured',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -155,6 +166,19 @@ exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
   image: 'image',
   url: 'url'
 };
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.SubCategoryOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image',
+  url: 'url',
+  categoryId: 'categoryId'
+};
 exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN',
   USER: 'USER',
@@ -163,7 +187,8 @@ exports.Role = exports.$Enums.Role = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Category: 'Category'
+  Category: 'Category',
+  SubCategory: 'SubCategory'
 };
 
 /**

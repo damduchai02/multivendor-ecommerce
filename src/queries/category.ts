@@ -27,7 +27,7 @@ export const upsertCategory = async (category: Category) => {
             },
           },
           {
-            OR: [{ name: category.name, url: category.url }],
+            OR: [{ name: category.name }, { url: category.url }],
           },
         ],
       },
@@ -54,7 +54,7 @@ export const upsertCategory = async (category: Category) => {
 
     return categoryDetails;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 };
 
